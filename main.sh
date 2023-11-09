@@ -106,7 +106,7 @@ gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | 
     chronyc sourcestats -v
     chronyc tracking -v
     
-    wget https://raw.githubusercontent.com/FadlyNotNot/v1/main/bbr.sh &&  chmod +x bbr.sh && ./bbr.sh
+    wget ${REPO}fodder/bbr.sh &&  chmod +x bbr.sh && ./bbr.sh && rm -rf bbr.sh
 clear
 
 echo ""
