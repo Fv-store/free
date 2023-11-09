@@ -106,31 +106,31 @@ read -rp "Input ur domain : " -e pp
 	echo "$pp" > /root/domain
         echo "IP=$pp" > /var/lib/SIJA/ipvps.conf
     fi
-
-clear
-wget -q ${REPO}backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
-
-clear
-wget -q ${REPO}ssh/ins-xray && chmod +x ins-xray && ./ins-xray
-
 clear
 wget -q ${REPO}ssh/ins-ssh && chmod +x ins-ssh && ./ins-ssh
-
+rm -rf ins-ssh
 clear
+wget -q ${REPO}backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+rm -rf set-br.sh
+clear
+wget -q ${REPO}ssh/ins-xray && chmod +x ins-xray && ./ins-xray
+rm -rf ins-xray
+clear
+### menu ###
 wget -q ${REPO}menu/menu.zip
 unzip menu.zip
 chmod +x menu/*
 mv menu/* /usr/local/sbin
 rm -rf menu.zip
 rm -rf menu
-
 clear
+### Websocket ###
 cd /usr/local/bin
 wget -q ${REPO}ws/ws.zip
 unzip ws.zip
 chmod +x *
 rm -rf ws.zip
-
+### Service ###
 cd /etc/systemd/system
 wget -q ${REPO}ws/service.zip
 unzip service.zip
@@ -259,13 +259,8 @@ echo ""
 echo "------------------------------------------------------------"
 echo ""
 echo "" | tee -a log-install.txt
-rm /root/limit >/dev/null 2>&1
-rm /root/setup.sh >/dev/null 2>&1
-rm /root/setup.sh >/dev/null 2>&1
-rm /root/ins-xray.sh >/dev/null 2>&1
-rm /root/insshws.sh >/dev/null 2>&1
 touch /root/.system 
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e ""
-read -n 1 -s -r -p "Pencet [ Enter ] Untuk Reboot"
+read -p "Pencet [ Enter ] Untuk Reboot"
 reboot
