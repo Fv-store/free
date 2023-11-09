@@ -139,19 +139,22 @@ rm -rf service.zip
 cd
 
 clear
+apt -y install vnstat > /dev/null 2>&1
 /etc/init.d/vnstat restart
-wget -q https://humdi.net/vnstat/vnstat-2.6.tar.gz
+apt -y install libsqlite3-dev > /dev/null 2>&1
+wget https://humdi.net/vnstat/vnstat-2.6.tar.gz
 tar zxvf vnstat-2.6.tar.gz
 cd vnstat-2.6
-./configure --prefix=/usr --sysconfdir=/etc >/dev/null 2>&1 && make >/dev/null 2>&1 && make install >/dev/null 2>&1
+./configure --prefix=/usr --sysconfdir=/etc && make && make install
 cd
 vnstat -u -i $NET
 sed -i 's/Interface "'""eth0""'"/Interface "'""$NET""'"/g' /etc/vnstat.conf
 chown vnstat:vnstat /var/lib/vnstat -R
 systemctl enable vnstat
 /etc/init.d/vnstat restart
-rm -f /root/vnstat-2.6.tar.gz >/dev/null 2>&1
-rm -rf /root/vnstat-2.6 >/dev/null 2>&1
+/etc/init.d/vnstat status
+rm -f /root/vnstat-2.6.tar.gz
+rm -rf /root/vnstat-2.6
 clear
 
 cat > /etc/cron.d/re_otm <<-END
