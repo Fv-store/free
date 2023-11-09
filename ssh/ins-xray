@@ -76,9 +76,8 @@ mkdir -p /home/vps/public_html
 # set uuid
 uuid=$(cat /proc/sys/kernel/random/uuid)
 # xray config
-wget -O /etc/nginx/config.json "https://raw.githubusercontent.com/Fv-store/free/main/ssh/config.json"
-# xray config
-wget -O /etc/nginx/conf.d/xray.conf "https://raw.githubusercontent.com/Fv-store/free/main/ssh/xray.conf"
+wget -O /etc/nginx/config.json "https://raw.githubusercontent.com/Fv-store/free/main/ssh/config.json" && chmod +x /etc/nginx/config.json
+wget -O /etc/nginx/conf.d/xray.conf "https://raw.githubusercontent.com/Fv-store/free/main/ssh/xray.conf" && chmod +x /etc/nginx/conf.d/xray.conf
 
 rm -rf /etc/systemd/system/xray.service.d
 rm -rf /etc/systemd/system/xray@.service
