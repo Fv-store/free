@@ -1,15 +1,15 @@
-# INSTALL
-<pre><code>wget https://raw.githubusercontent.com/Fv-store/free/main/main.sh && chmod +x main.sh && ./main.sh</pre></code>
+# `Auto Script Free By FV-store`
 
-## Auto Script Free By FV-store
-```
+## `NOTE !`
 - Tidak Untuk Di Perjual Belikan
 - Wajib Bawa Domain Sendiri
-- Tanpa Izin Script
-```
+- Langsung Install Tanpa Izin IP
 
-## SUPPORT OS 
+## `SUPPORT OS`
+- Debian 9/10
+- Ubuntu 18/20 LTS
+
+## `INSTALL SCRIPT`
 ```
-Debian 9/10
-Ubuntu 18/20 LTS
+wget -q https://raw.githubusercontent.com/Fv-store/free/main/main.sh && chmod +x main.sh && ./main.sh
 ```
