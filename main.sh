@@ -36,7 +36,12 @@ elif [[ -e /etc/centos-release ]]; then
 	OS=centos
 fi
 
-echo -e "[ ${green}INFO${NC} ] Preparing the install file"
+curl ipinfo.io/org > /root/.isp
+curl ipinfo.io/city > /root/.city
+curl ifconfig.me > /root/.ip
+curl ipinfo.io/region > /root/.region
+
+echo -e "[ ${green}INFO${NC} ] Memasang Paket Yg Dibutuhkan..."
 sleep 2
 apt update -y
 apt update -y
@@ -86,7 +91,7 @@ secs_to_human() {
 start=$(date +%s)
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
-echo -e "[ ${green}INFO${NC} ] Aight good ... installation file is ready"
+echo -e "[ ${green}INFO${NC} ] Memasang Swap Sebesar 1Gb..."
 sleep 2
 gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
     gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
@@ -111,7 +116,9 @@ clear
 
 echo ""
 clear
-yellow "SEBELUM MASKUIN DOMAIN WAJIB POINTING TERLEBIH DAHULU !!! "
+echo ""
+echo ""
+yellow "Note : SEBELUM MEMASUKAN DOMAIN, HARAP POINTING DULU IP VPS KAMU !"
 echo " "
 read -rp "Input ur domain : " -e pp
     if [ -z $pp ]; then
@@ -127,15 +134,28 @@ read -rp "Input ur domain : " -e pp
         echo "IP=$pp" > /var/lib/SIJA/ipvps.conf
     fi
 clear
+echo -e "[ ${green}INFO${NC} ] Memasang Service SSH..."
+sleep 2
+### ALL SERVICE ###
 wget -q ${REPO}ssh/ins-ssh && chmod +x ins-ssh && ./ins-ssh
 rm -rf ins-ssh
 clear
+echo -e "[ ${green}INFO${NC} ] Memasang Service Backup..."
+sleep 2
 wget -q ${REPO}backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 rm -rf set-br.sh
 clear
+echo -e "[ ${green}INFO${NC} ] Memasang Service Xray..."
+sleep 2
 wget -q ${REPO}ssh/ins-xray && chmod +x ins-xray && ./ins-xray
 rm -rf ins-xray
+echo -e "[ ${green}INFO${NC} ] Memasang Service Udp Custom..."
+sleep 2
+wget -q ${REPO}fodder/ins-udp && chmod +x ins-udp && ./ins-udp
+rm -rf ins-udp
 clear
+echo -e "[ ${green}INFO${NC} ] Download & Pasang File Menu..."
+sleep 2
 ### menu ###
 wget -q ${REPO}menu/menu.zip
 unzip menu.zip
@@ -144,13 +164,15 @@ mv menu/* /usr/local/sbin
 rm -rf menu.zip
 rm -rf menu
 clear
+echo -e "[ ${green}INFO${NC} ] Memasang Service Websocket..."
+sleep 2
 ### Websocket ###
 cd /usr/local/bin
 wget -q ${REPO}ws/ws.zip
 unzip ws.zip
 chmod +x *
 rm -rf ws.zip
-### Service ###
+### Service Websocket ###
 cd /etc/systemd/system
 wget -q ${REPO}ws/service.zip
 unzip service.zip
@@ -159,6 +181,9 @@ rm -rf service.zip
 cd
 
 clear
+echo -e "[ ${green}INFO${NC} ] Memasang Service Vnstat..."
+sleep 2
+### SERVICE VNSTAT ###
 apt -y install vnstat > /dev/null 2>&1
 /etc/init.d/vnstat restart
 apt -y install libsqlite3-dev > /dev/null 2>&1
