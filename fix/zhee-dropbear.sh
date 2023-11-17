@@ -1,11 +1,14 @@
 #!/bin/bash
 apt -y remove dropbear
 sleep 0.5
+rm -rf /etc/default/dropbear
+sleep 0.5
 apt -y purge dropbear
 sleep 0.5
 apt-get -y --purge remove dropbear
 sleep 0.5
 apt -y install dropbear
+0.5
 echo "=== Install Dropbear ==="
 # install dropbear
 apt -y install dropbear
