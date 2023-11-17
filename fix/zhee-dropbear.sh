@@ -20,4 +20,6 @@ echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/ssh restart
 /etc/init.d/dropbear restart
 sleep 0.5
+rm -rf zhee-dropbear.sh
+sleep 0.5
 menu
