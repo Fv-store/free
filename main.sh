@@ -78,6 +78,7 @@ echo "$localip $(hostname)" >> /etc/hosts
 fi
 mkdir -p /etc/xray
 mkdir -p /etc/v2ray
+mkdir -p /etc/user-create
 touch /etc/xray/domain
 touch /etc/v2ray/domain
 touch /etc/xray/scdomain
