@@ -8,7 +8,7 @@
 - Langsung Install Tanpa Izin IP
 
 ## `SUPPORT OS`
-- Debian 9/10
+- Debian 10/11
 - Ubuntu 18/20 LTS
 
 ## INSTALL SCRIPT
@@ -16,13 +16,20 @@
 wget -q https://raw.githubusercontent.com/Fv-store/free/main/main.sh && chmod +x main.sh && ./main.sh
 ```
 
-
 ## FIX DROPBEAR
 ```
 wget -q https://raw.githubusercontent.com/Fv-store/free/main/fix/zhee-dropbear.sh && chmod +x zhee-dropbear.sh && ./zhee-dropbear.sh
 ```
 - `NOTE`
 ```
+Indonesia:
 Fix dropbear off
 akibat Installasi Berulang - Ulang
+
+English:
+Fix dropbear off
+due to repeated installation
 ```
+
+## report bugs on my telegram
+telegram=https://t.me/fv_stores
